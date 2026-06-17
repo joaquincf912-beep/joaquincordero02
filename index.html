@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joaquín Cordero | Desarrollador Web & Frontend Engineer</title>
+  
+  <!-- SEO & Brand Authority -->
+  <meta name="description" content="Desarrollo web a medida para startups y empresas. Frontend de alto rendimiento, optimizado para Core Web Vitals, conversión (CRO) y tiempos de carga inferiores a 1 segundo.">
+  <meta name="keywords" content="Joaquín Cordero, Desarrollador Web B2B, Frontend Engineer, React, Next.js, Vercel, Optimización Web, Core Web Vitals, SEO, CRO">
+  <meta name="author" content="Joaquín Cordero Freitez">
+  
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Joaquín Cordero | Desarrollador Web & Frontend Engineer">
+  <meta property="og:description" content="Plataformas web ultra rápidas optimizadas para conversión y Core Web Vitals. Diseñado para fundadores, CEOs y directores de tecnología.">
+  <meta property="og:image" content="assets/joaquin-playa.jpg">
+  
+  <!-- Typography (Inter & Outfit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            baseBlack: '#0A0A0A',
+            pureBlack: '#000000',
+            cardGray: '#161616',
+            borderGray: '#262626',
+            accentBlue: '#0052FF',
+            accentHover: '#0041CC',
+            textSlate: '#94A3B8',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom CSS for Scrollbars, Gradients & Background Patterns -->
+  <style>
+    /* Custom premium scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #363636;
+    }
+    /* Grid background overlay */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(38, 38, 38, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(38, 38, 38, 0.1) 1px, transparent 1px);
+    }
+    
+    /* Radial lighting glow effect */
+    .radial-glow {
+      background: radial-gradient(circle at center, rgba(0, 82, 255, 0.08) 0%, transparent 65%);
+    }
+    /* Hide default scrollbar but keep functionality */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-baseBlack text-white font-sans antialiased overflow-x-hidden relative">
+  <!-- Subtle Ambient Radial Lighting Backgrounds -->
+  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] radial-glow -translate-x-1/2 pointer-events-none z-0"></div>
+  <div class="absolute top-[40%] right-0 w-[600px] h-[600px] radial-glow pointer-events-none z-0"></div>
+  <div class="absolute bottom-[10%] left-10 w-[500px] h-[500px] radial-glow pointer-events-none z-0"></div>
+  <!-- Grid background overlay for enterprise depth -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none z-0"></div>
+  <!-- ==========================================
+      HEADER & NAVIGATION
+      ========================================== -->
+  <nav class="sticky top-0 z-50 backdrop-blur-md bg-black/60 border-b border-borderGray transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- High-end Brand Mark -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none">
+        <span class="text-white font-heading font-extrabold text-xl tracking-tight uppercase select-none">
+          JOAQUÍN CORDERO <span class="text-accentBlue text-2xl leading-none">.</span>
+        </span>
+      </a>
+      <!-- Desktop Nav - Middle -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#sobre-mi" data-i18n="nav.about" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">Sobre Mí</a>
+        <a href="#servicios" data-i18n="nav.services" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">Soluciones</a>
+        <a href="#portafolio" data-i18n="nav.portfolio" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">Casos de Éxito</a>
+        <a href="#contacto" data-i18n="nav.contact" class="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-200">Contacto</a>
+      </div>
+      <!-- Header Right Actions -->
+      <div class="hidden md:flex items-center gap-4">
+        
+        <!-- Language Switcher Dropdown -->
+        <div class="relative">
+          <button 
+            id="lang-dropdown-btn"
+            class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-borderGray bg-cardGray/50 hover:bg-cardGray hover:border-slate-700 text-sm font-medium transition-all focus:outline-none"
+          >
+            <span id="lang-btn-text">🇪🇸 ES</span>
+            <svg class="w-3.5 h-3.5 text-slate-400 transition-transform duration-300" id="lang-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <!-- Dropdown Options -->
+          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-40 rounded-xl bg-cardGray border border-borderGray shadow-2xl p-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+            <button onclick="changeLanguage('ES')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-medium text-white bg-accentBlue">
+              <span class="flex items-center gap-2"><span>🇪🇸</span><span>Español</span></span>
+              <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            </button>
+            <button onclick="changeLanguage('EN')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-medium text-slate-300 hover:bg-[#222222] hover:text-white">
+              <span class="flex items-center gap-2"><span>🇺🇸</span><span>English</span></span>
+            </button>
+            <button onclick="changeLanguage('PT')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-medium text-slate-300 hover:bg-[#222222] hover:text-white">
+              <span class="flex items-center gap-2"><span>🇧🇷</span><span>Português</span></span>
+            </button>
+            <button onclick="changeLanguage('FR')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-medium text-slate-300 hover:bg-[#222222] hover:text-white">
+              <span class="flex items-center gap-2"><span>🇫🇷</span><span>Français</span></span>
+            </button>
+          </div>
+        </div>
+        <!-- Primary header CTA -->
+        <a 
+          href="#contacto" 
+          data-i18n="nav.cta"
+          class="bg-accentBlue hover:bg-accentHover text-white px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-[1.01] hover:-translate-y-0.5 shadow-lg shadow-accentBlue/10"
+        >
+          Agendar Consultoría
+        </a>
+      </div>
+      <!-- Mobile Menu button -->
+      <div class="flex items-center gap-3 md:hidden">
+        <!-- Mobile Language switch toggle -->
+        <button 
+          id="mobile-lang-btn"
+          class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-borderGray bg-cardGray text-xs font-medium"
+        >
+          <span id="mobile-lang-text">🇪🇸 ES</span>
+        </button>
+        
+        <button 
+          id="mobile-menu-btn"
+          class="p-2 rounded-lg bg-cardGray border border-borderGray text-slate-300 hover:text-white focus:outline-none"
+        >
+          <svg class="w-6 h-6" id="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile language options tray -->
+    <div id="mobile-lang-tray" class="hidden md:hidden border-b border-borderGray bg-cardGray px-6 py-2 flex flex-wrap gap-2 justify-center">
+      <button onclick="changeLanguage('ES')" class="mobile-lang-opt flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-accentBlue text-white">🇪🇸 Español</button>
+      <button onclick="changeLanguage('EN')" class="mobile-lang-opt flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#222222] text-slate-300">🇺🇸 English</button>
+      <button onclick="changeLanguage('PT')" class="mobile-lang-opt flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#222222] text-slate-300">🇧🇷 Português</button>
+      <button onclick="changeLanguage('FR')" class="mobile-lang-opt flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#222222] text-slate-300">🇫🇷 Français</button>
+    </div>
+    <!-- Mobile Responsive Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="hidden md:hidden border-b border-borderGray bg-[#101010] py-6 px-6 animate-in slide-in-from-top duration-300">
+      <div class="flex flex-col gap-4">
+        <a href="#sobre-mi" onclick="toggleMobileMenu()" data-i18n="nav.about" class="text-base font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-borderGray/30">Sobre Mí</a>
+        <a href="#servicios" onclick="toggleMobileMenu()" data-i18n="nav.services" class="text-base font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-borderGray/30">Soluciones</a>
+        <a href="#portafolio" onclick="toggleMobileMenu()" data-i18n="nav.portfolio" class="text-base font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-borderGray/30">Casos de Éxito</a>
+        <a href="#contacto" onclick="toggleMobileMenu()" data-i18n="nav.contact" class="text-base font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-borderGray/30">Contacto</a>
+        <a href="#contacto" onclick="toggleMobileMenu()" data-i18n="nav.cta" class="bg-accentBlue hover:bg-accentHover text-white text-center py-3 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all mt-2">Agendar Consultoría</a>
+      </div>
+    </div>
+  </nav>
+  <!-- ==========================================
+      HERO & ELEVATED INTRODUCTION
+      ========================================== -->
+  <header class="relative z-10 pt-20 pb-28 md:pt-32 md:pb-40 max-w-7xl mx-auto px-6">
+    <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+      
+      <!-- Premium Top Tagline -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-borderGray bg-[#121212]/80 backdrop-blur-md mb-8 hover:border-slate-700 transition-all duration-300">
+        <span class="w-2 h-2 rounded-full bg-accentBlue animate-pulse"></span>
+        <span class="text-[10px] md:text-xs font-bold tracking-widest text-slate-300 uppercase" data-i18n="hero.tagline">
+          DESARROLLO WEB · FRONTEND ENGINEER · CRO
+        </span>
+      </div>
+      <!-- High-Contrast B2B Headline with Gradient -->
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
+        <span data-i18n="hero.title1">Soluciones digitales de</span> <br class="hidden sm:inline" />
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400 select-none" data-i18n="hero.title2">
+          alto rendimiento
+        </span>
+      </h1>
+      
+      <p class="text-base sm:text-lg md:text-xl font-normal leading-relaxed text-slate-400 max-w-2xl mb-12" data-i18n="hero.subtitle">
+        Construyo plataformas web de alto rendimiento optimizadas para conversión (CRO), arquitectura SEO sólida y tiempos de carga inferiores a 1 segundo para startups y empresas que exigen resultados.
+      </p>
+      <!-- Action Buttons in Grid/Flexbox -->
+      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center justify-center">
+        
+        <!-- Primary CTA -->
+        <a 
+          href="#contacto" 
+          class="group flex items-center justify-center gap-2.5 bg-accentBlue hover:bg-accentHover text-white w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.01] hover:-translate-y-0.5 shadow-xl shadow-accentBlue/25"
+        >
+          <span data-i18n="hero.ctaPrimary">Agendar Consultoría</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+        <!-- Secondary CTA -->
+        <a 
+          href="#portafolio" 
+          data-i18n="hero.ctaSecondary"
+          class="flex items-center justify-center bg-cardGray hover:bg-[#202020] text-slate-300 hover:text-white border border-borderGray w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.01] hover:-translate-y-0.5"
+        >
+          Ver Casos de Éxito
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- ==========================================
+      PHILOSOPHY & TRUST SECTORS
+      ========================================== -->
+  <section id="sobre-mi" class="relative z-10 py-24 border-t border-borderGray bg-[#0d0d0d]/80">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        
+        <!-- Column Left: Business Bio & Global Operations -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-block">
+            <span class="text-xs font-extrabold tracking-widest text-accentBlue uppercase border-b border-accentBlue/40 pb-1.5" data-i18n="about.label">
+              FILOSOFÍA DE OPERACIONES
+            </span>
+          </div>
+          
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold tracking-tight text-white leading-tight" data-i18n="about.title">
+            Impacto global con ejecución local
+          </h2>
+          <div class="space-y-6 text-slate-400 font-normal leading-relaxed">
+            <p data-i18n="about.bio1">Soy Joaquín Cordero Freitez. He gestionado proyectos de desarrollo web de manera remota a nivel internacional, operando desde Venezuela, Colombia y Brasil. Esta perspectiva global me permite entender diferentes mercados y entregar soluciones adaptables y altamente resolutivas.</p>
+            <p data-i18n="about.bio2">Me especializo en arquitectura frontend moderna: React, Next.js y Vercel. Cada línea de código está orientada a maximizar la velocidad, la conversión y la experiencia del usuario, alineadas con los objetivos comerciales de tu empresa.</p>
+          </div>
+          <!-- Flag operations tags -->
+          <div class="flex flex-wrap gap-3 pt-4">
+            <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cardGray border border-borderGray text-xs font-medium text-slate-300">
+              <span>🇻🇪</span> Venezuela
+            </span>
+            <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cardGray border border-borderGray text-xs font-medium text-slate-300">
+              <span>🇨🇴</span> Colombia
+            </span>
+            <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cardGray border border-borderGray text-xs font-medium text-slate-300">
+              <span>🇧🇷</span> Brasil
+            </span>
+          </div>
+        </div>
+        <!-- Column Right: Trust Badge (Institutional Credibility) -->
+        <div class="lg:col-span-5">
+          
+          <!-- Photo & Postcard Mockup overlay -->
+          <div class="relative rounded-2xl overflow-hidden border border-borderGray bg-cardGray p-4 shadow-2xl shadow-black/80 hover:scale-[1.01] transition-transform duration-300 group">
+            
+            <!-- Visual Photo of Joaquin -->
+            <div class="aspect-video w-full rounded-xl overflow-hidden mb-6 relative">
+              <img 
+                src="assets/joaquin-bogota.jpg" 
+                alt="Joaquín Cordero Freitez" 
+                class="object-cover w-full h-full object-center group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-medium tracking-wide text-slate-300 uppercase">
+                Bogotá, Colombia 🇨🇴
+              </div>
+            </div>
+            <!-- Trust details wrapper -->
+            <div class="space-y-4">
+              
+              <div class="flex items-center justify-between pb-2 border-b border-borderGray/50">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-200" data-i18n="about.badgeTitle">
+                  Operación Remota 100% Garantizada
+                </h3>
+                <span class="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  ONLINE
+                </span>
+              </div>
+              <!-- Bullet list -->
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <div class="p-1 rounded bg-[#202020] border border-borderGray mt-0.5 text-accentBlue">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <p class="text-xs text-slate-400 leading-normal" data-i18n="about.badgeSync">
+                    Disponibilidad horaria síncrona en tu zona horaria.
+                  </p>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="p-1 rounded bg-[#202020] border border-borderGray mt-0.5 text-accentBlue">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </div>
+                  <p class="text-xs text-slate-400 leading-normal" data-i18n="about.badgeSlack">
+                    Canales de comunicación en Slack, Teams o Discord.
+                  </p>
+                </li>
+                <li class="flex items-start gap-3">
+                  <div class="p-1 rounded bg-[#202020] border border-borderGray mt-0.5 text-accentBlue">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 7a3 3 0 100-6 3 3 0 000 6zM8 7v7M8 14a3 3 0 100 6 3 3 0 000-6zM16 17a3 3 0 100-6 3 3 0 000 6zM16 11V9a4 4 0 00-4-4h-2" />
+                    </svg>
+                  </div>
+                  <p class="text-xs text-slate-400 leading-normal" data-i18n="about.badgeCicd">
+                    Entregas iterativas constantes mediante CI/CD visual.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==========================================
+      SOLUTIONS & PROCESS B2B
+      ========================================== -->
+  <section id="servicios" class="relative z-10 py-24 max-w-7xl mx-auto px-6">
+    
+    <!-- Header info -->
+    <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+      <span class="text-xs font-extrabold tracking-widest text-accentBlue uppercase border-b border-accentBlue/40 pb-1" data-i18n="services.label">
+        SOLUCIONES CORPORATIVAS
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-white leading-tight" data-i18n="services.title">
+        Ingeniería digital para empresas exigentes
+      </h2>
+    </div>
+    <!-- Grid Services: Web Development Only -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+      
+      <!-- Service 1: Custom Web Development -->
+      <div class="bg-cardGray border border-borderGray p-8 md:p-10 rounded-2xl hover:border-accentBlue/30 hover:scale-[1.005] hover:-translate-y-0.5 transition-all duration-300 group">
+        <div class="inline-flex p-4 rounded-xl bg-accentBlue/10 border border-accentBlue/20 text-accentBlue mb-8 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        
+        <h3 class="text-xl md:text-2xl font-heading font-extrabold text-white mb-4" data-i18n="services.webTitle">
+          Desarrollo Web a Medida
+        </h3>
+        
+        <p class="text-sm md:text-base text-slate-400 leading-relaxed mb-8" data-i18n="services.webDesc">
+          Frontend de alto rendimiento con optimización Core Web Vitals, SEO arquitectónico, diseño centrado en conversión (CRO) y tiempos de carga inferiores a 1 segundo para maximizar tus ventas.
+        </p>
+        <!-- Tech specifications stack -->
+        <div class="border-t border-borderGray/60 pt-6">
+          <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-4">
+            TECHNICAL SPECS
+          </span>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">React / Next.js</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Tailwind CSS</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Vercel / AWS</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Performance Optimization</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">SEO & Core Web Vitals</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">B2B Integrations</span>
+          </div>
+        </div>
+      </div>
+      <!-- Service 2: UI/UX & Design Systems -->
+      <div class="bg-cardGray border border-borderGray p-8 md:p-10 rounded-2xl hover:border-accentBlue/30 hover:scale-[1.005] hover:-translate-y-0.5 transition-all duration-300 group">
+        <div class="inline-flex p-4 rounded-xl bg-accentBlue/10 border border-accentBlue/20 text-accentBlue mb-8 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+        </div>
+        
+        <h3 class="text-xl md:text-2xl font-heading font-extrabold text-white mb-4" data-i18n="services.uiTitle">
+          UI/UX & Design Systems
+        </h3>
+        
+        <p class="text-sm md:text-base text-slate-400 leading-relaxed mb-8" data-i18n="services.uiDesc">
+          Interfaces premium centradas en el usuario, con sistemas de diseño escalables, componentes reutilizables y flujos de navegación optimizados para la retención y la conversión.
+        </p>
+        <!-- UI/UX specs stack -->
+        <div class="border-t border-borderGray/60 pt-6">
+          <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-4">
+            DESIGN STACK
+          </span>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Figma to Code</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Design Systems</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Microinteracciones</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Accesibilidad WCAG</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Responsive Design</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">A/B Testing</span>
+          </div>
+        </div>
+      </div>
+      <!-- Service 3: SEO & Performance Optimization -->
+      <div class="bg-cardGray border border-borderGray p-8 md:p-10 rounded-2xl hover:border-accentBlue/30 hover:scale-[1.005] hover:-translate-y-0.5 transition-all duration-300 group">
+        <div class="inline-flex p-4 rounded-xl bg-accentBlue/10 border border-accentBlue/20 text-accentBlue mb-8 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          </svg>
+        </div>
+        
+        <h3 class="text-xl md:text-2xl font-heading font-extrabold text-white mb-4" data-i18n="services.seoTitle">
+          SEO & Performance
+        </h3>
+        
+        <p class="text-sm md:text-base text-slate-400 leading-relaxed mb-8" data-i18n="services.seoDesc">
+          Auditorías técnicas profundas, optimización de Core Web Vitals, arquitectura SEO avanzada y estrategias de posicionamiento orgánico para impulsar el tráfico cualificado y las conversiones.
+        </p>
+        <!-- SEO specs stack -->
+        <div class="border-t border-borderGray/60 pt-6">
+          <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-4">
+            PERFORMANCE STACK
+          </span>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Core Web Vitals</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Lighthouse 100</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Schema Markup</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Lazy Loading</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">CDN & Caching</span>
+            <span class="text-xs px-2.5 py-1 rounded bg-[#202020] border border-borderGray text-slate-300 font-medium">Análisis Técnico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pipeline Process Block -->
+    <div class="border border-borderGray bg-[#0d0d0d]/80 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+      
+      <h3 class="text-xl md:text-2xl font-heading font-extrabold text-white text-center mb-12" data-i18n="services.processTitle">
+        Pipeline de Trabajo Optimizado
+      </h3>
+      <!-- Pipeline Line timeline -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        
+        <!-- Step 1 -->
+        <div class="space-y-3 group/step">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-accentBlue/10 border border-accentBlue text-accentBlue text-xs font-bold font-heading group-hover/step:bg-accentBlue group-hover/step:text-white transition-colors duration-300">
+              1
+            </span>
+            <h4 class="text-sm font-bold text-slate-200 tracking-wider uppercase" data-i18n="services.step1Title">
+              Discovery Call
+            </h4>
+          </div>
+          <p class="text-xs md:text-sm text-slate-400 leading-relaxed pl-11" data-i18n="services.step1Desc">
+            Auditoría completa de tu infraestructura digital actual y definición de metas comerciales claras.
+          </p>
+        </div>
+        <!-- Step 2 -->
+        <div class="space-y-3 group/step">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-accentBlue/10 border border-accentBlue text-accentBlue text-xs font-bold font-heading group-hover/step:bg-accentBlue group-hover/step:text-white transition-colors duration-300">
+              2
+            </span>
+            <h4 class="text-sm font-bold text-slate-200 tracking-wider uppercase" data-i18n="services.step2Title">
+              Sprint & Execution
+            </h4>
+          </div>
+          <p class="text-xs md:text-sm text-slate-400 leading-relaxed pl-11" data-i18n="services.step2Desc">
+            Desarrollo ágil en componentes modulares con sprints semanales y reportes de avance continuos.
+          </p>
+        </div>
+        <!-- Step 3 -->
+        <div class="space-y-3 group/step">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-accentBlue/10 border border-accentBlue text-accentBlue text-xs font-bold font-heading group-hover/step:bg-accentBlue group-hover/step:text-white transition-colors duration-300">
+              3
+            </span>
+            <h4 class="text-sm font-bold text-slate-200 tracking-wider uppercase" data-i18n="services.step3Title">
+              Deployment & ROI
+            </h4>
+          </div>
+          <p class="text-xs md:text-sm text-slate-400 leading-relaxed pl-11" data-i18n="services.step3Desc">
+            Lanzamiento en entornos de producción ultrarrápidos y analítica orientada a optimizar la conversión.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==========================================
+      CASOS DE ÉXITO / ESTUDIOS DE CASO
+      ========================================== -->
+  <section id="portafolio" class="relative z-10 py-24 border-t border-borderGray bg-[#0d0d0d]/80">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Header Info -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+        <div class="space-y-4">
+          <span class="text-xs font-extrabold tracking-widest text-accentBlue uppercase border-b border-accentBlue/40 pb-1" data-i18n="portfolio.label">
+            CASOS DE ESTUDIO
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold tracking-tight text-white leading-tight" data-i18n="portfolio.title">
+            Proyectos que impulsan métricas de negocio
+          </h2>
+        </div>
+        <!-- Portfolio Filters -->
+        <div class="flex flex-wrap gap-2.5 p-1 rounded-xl bg-cardGray border border-borderGray w-fit">
+          <button 
+            id="filter-btn-all"
+            onclick="setPortfolioFilter('ALL')"
+            class="px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all bg-[#262626] text-white border border-slate-700 shadow-sm"
+          >
+            <span data-i18n="portfolio.filterAll">Todos</span>
+          </button>
+          <button 
+            id="filter-btn-web"
+            onclick="setPortfolioFilter('WEB')"
+            class="px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all text-slate-400 hover:text-white"
+          >
+            <span data-i18n="portfolio.filterWeb">Desarrollo Web</span>
+          </button>
+        </div>
+      </div>
+      <!-- Grid 2x2 Case studies -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Rendered dynamically by Javascript for instant multilingual switching -->
+      </div>
+    </div>
+  </section>
+  <!-- ==========================================
+      EMBUDO DE CONTACTO DE ALTO VALOR
+      ========================================== -->
+  <section id="contacto" class="relative z-10 py-24 max-w-7xl mx-auto px-6">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      
+      <!-- Left Column: Form & CRO copywriting -->
+      <div class="lg:col-span-7 space-y-8">
+        
+        <div class="space-y-4">
+          <span class="text-xs font-extrabold tracking-widest text-accentBlue uppercase border-b border-accentBlue/40 pb-1" data-i18n="contact.label">
+            EMBUDO DE ADQUISICIÓN
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-white leading-tight" data-i18n="contact.title">
+            Inicia tu transformación digital hoy
+          </h2>
+          <p class="text-sm md:text-base text-slate-400 leading-relaxed" data-i18n="contact.subtitle">
+            Completa el formulario corporativo para evaluar la viabilidad de tu proyecto y agendar una llamada de estrategia.
+          </p>
+        </div>
+        <!-- Form Card -->
+        <div class="bg-cardGray border border-borderGray p-6 md:p-8 rounded-2xl relative overflow-hidden">
+          
+          <!-- Success screen (Hidden by default) -->
+          <div id="form-success-card" class="hidden py-12 flex flex-col items-center text-center space-y-6 animate-in zoom-in-95 duration-300">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500 flex items-center justify-center text-emerald-400">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-heading font-extrabold text-white" data-i18n="contact.successTitle">
+              ¡Consulta Recibida con Éxito!
+            </h3>
+            <p class="text-sm text-slate-400 max-w-md" data-i18n="contact.successDesc">
+              Hemos registrado tus datos. Joaquín revisará tu solicitud y se pondrá en contacto en menos de 24 horas hábiles.
+            </p>
+            <button 
+              onclick="resetContactForm()"
+              class="text-xs font-bold text-accentBlue hover:underline uppercase tracking-wider"
+            >
+              Enviar otra consulta
+            </button>
+          </div>
+          <!-- Standard form inputs -->
+          <form id="corporate-contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              
+              <!-- Name -->
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-slate-300 uppercase tracking-wider" data-i18n="contact.name">
+                  Nombre Completo
+                </label>
+                <input 
+                  type="text"
+                  required
+                  id="form-name"
+                  placeholder="Joaquín Cordero"
+                  class="w-full bg-[#0d0d0d] border border-borderGray rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accentBlue focus:border-transparent transition-all"
+                />
+              </div>
+              <!-- Company -->
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-slate-300 uppercase tracking-wider" data-i18n="contact.company">
+                  Organización / Empresa
+                </label>
+                <input 
+                  type="text"
+                  id="form-company"
+                  placeholder="Stripe Inc."
+                  class="w-full bg-[#0d0d0d] border border-borderGray rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accentBlue focus:border-transparent transition-all"
+                />
+              </div>
+            </div>
+            <!-- Corporate Email -->
+            <div class="space-y-2">
+              <label class="text-xs font-bold text-slate-300 uppercase tracking-wider" data-i18n="contact.email">
+                Correo Corporativo
+              </label>
+              <input 
+                type="email"
+                required
+                id="form-email"
+                placeholder="ceo@company.com"
+                class="w-full bg-[#0d0d0d] border border-borderGray rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accentBlue focus:border-transparent transition-all"
+              />
+            </div>
+            <!-- Estimated Budget Selector (Radio buttons grid) -->
+            <div class="space-y-3">
+              <label class="text-xs font-bold text-slate-300 uppercase tracking-wider block" data-i18n="contact.budget">
+                Presupuesto Estimado
+              </label>
+              
+              <!-- Hidden Input for Budget Value -->
+              <input type="hidden" id="form-budget" value="<$2k" />
+              
+              <div class="grid grid-cols-3 gap-3">
+                <button
+                  type="button"
+                  id="budget-btn-1"
+                  onclick="setBudget('<$2k', 1)"
+                  class="py-3 rounded-lg border text-center text-xs font-semibold tracking-wider transition-all duration-200 border-accentBlue bg-accentBlue/10 text-white shadow shadow-accentBlue/20"
+                >
+                  &lt;$2k
+                </button>
+                <button
+                  type="button"
+                  id="budget-btn-2"
+                  onclick="setBudget('$2k-$5k', 2)"
+                  class="py-3 rounded-lg border text-center text-xs font-semibold tracking-wider transition-all duration-200 border-borderGray bg-[#0d0d0d] text-slate-400 hover:text-white hover:border-slate-700"
+                >
+                  $2k-$5k
+                </button>
+                <button
+                  type="button"
+                  id="budget-btn-3"
+                  onclick="setBudget('$5k+', 3)"
+                  class="py-3 rounded-lg border text-center text-xs font-semibold tracking-wider transition-all duration-200 border-borderGray bg-[#0d0d0d] text-slate-400 hover:text-white hover:border-slate-700"
+                >
+                  $5k+
+                </button>
+              </div>
+            </div>
+            <!-- Project Requirements -->
+            <div class="space-y-2">
+              <label class="text-xs font-bold text-slate-300 uppercase tracking-wider" data-i18n="contact.requirements">
+                Requerimientos del Proyecto
+              </label>
+              <textarea 
+                required
+                rows="4"
+                id="form-message"
+                data-i18n-placeholder="contact.requirementsPlaceholder"
+                placeholder="Describe brevemente las necesidades de desarrollo web de tu negocio..."
+                class="w-full bg-[#0d0d0d] border border-borderGray rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accentBlue focus:border-transparent transition-all placeholder:text-slate-600 resize-none"
+              ></textarea>
+            </div>
+            <!-- Submit button -->
+            <button 
+              type="submit"
+              id="form-submit-btn"
+              class="w-full bg-accentBlue hover:bg-accentHover text-white py-4 rounded-xl text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-lg shadow-accentBlue/15"
+              data-i18n="contact.submit"
+            >
+              Enviar Formulario de Consulta
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- Right Column: Direct details & social links -->
+      <div class="lg:col-span-5 space-y-12 lg:pt-20">
+        
+        <!-- Direct Contact information -->
+        <div class="space-y-6">
+          <h3 class="text-sm font-bold uppercase tracking-widest text-slate-400" data-i18n="contact.directContact">
+            Contacto Directo
+          </h3>
+          <div class="space-y-4">
+            
+            <!-- Mail Link -->
+            <a 
+              href="mailto:joaquincf912@gmail.com"
+              class="flex items-center gap-4 p-4 rounded-xl border border-borderGray bg-cardGray hover:border-slate-700 hover:scale-[1.01] transition-all duration-200 group"
+            >
+              <div class="p-3 rounded-lg bg-[#202020] text-accentBlue group-hover:bg-accentBlue group-hover:text-white transition-all duration-300">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+                  EMAIL
+                </span>
+                <span class="text-sm font-medium text-white tracking-wide">
+                  joaquincf912@gmail.com
+                </span>
+              </div>
+            </a>
+            <!-- WhatsApp Link -->
+            <a 
+              href="https://wa.me/573186487147?text=Hola%20Joaqu%C3%ADn%2C%20quisiera%20agendar%20una%20consultor%C3%ADa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-4 p-4 rounded-xl border border-borderGray bg-cardGray hover:border-slate-700 hover:scale-[1.01] transition-all duration-200 group"
+            >
+              <div class="p-3 rounded-lg bg-[#202020] text-accentBlue group-hover:bg-accentBlue group-hover:text-white transition-all duration-300">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+                  WHATSAPP BUSINESS (Global)
+                </span>
+                <span class="text-sm font-medium text-white tracking-wide">
+                  +57 318 648 7147
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- Social channels -->
+        <div class="space-y-6">
+          <h3 class="text-sm font-bold uppercase tracking-widest text-slate-400" data-i18n="contact.social">
+            Canales Profesionales
+          </h3>
+          <div class="grid grid-cols-3 gap-3">
+            
+            <!-- YouTube -->
+            <a 
+              href="https://youtube.com/@joaquinkt" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex flex-col items-center justify-center p-4 rounded-xl border border-borderGray bg-cardGray hover:border-red-500/40 text-slate-400 hover:text-white transition-all duration-300 group"
+            >
+              <svg class="w-5 h-5 mb-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span class="text-[10px] font-bold tracking-wider uppercase">YouTube</span>
+            </a>
+            <!-- Instagram -->
+            <a 
+              href="https://instagram.com/joaquin.kt" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex flex-col items-center justify-center p-4 rounded-xl border border-borderGray bg-cardGray hover:border-pink-500/40 text-slate-400 hover:text-white transition-all duration-300 group"
+            >
+              <svg class="w-5 h-5 mb-2 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+              <span class="text-[10px] font-bold tracking-wider uppercase">Instagram</span>
+            </a>
+            <!-- TikTok -->
+            <a 
+              href="https://tiktok.com/@joaquinkt" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex flex-col items-center justify-center p-4 rounded-xl border border-borderGray bg-cardGray hover:border-teal-400/40 text-slate-400 hover:text-white transition-all duration-300 group"
+            >
+              <svg class="w-5 h-5 mb-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.85.94 2.01 1.58 3.25 1.85v3.83c-1.42-.03-2.82-.44-4.01-1.25-.39-.27-.75-.58-1.07-.93v6.33c.09 2.22-1.07 4.39-3.03 5.43-2.15 1.18-4.88.94-6.8-.59-1.92-1.57-2.58-4.23-1.63-6.52.88-2.19 3.23-3.62 5.58-3.38.16.02.32.06.48.11v3.91c-.81-.25-1.7-.13-2.42.34-.84.5-1.27 1.48-1.12 2.45.15.99.99 1.77 1.99 1.87.97.1 1.92-.47 2.27-1.39.09-.24.13-.5.12-.76V.02z" />
+              </svg>
+              <span class="text-[10px] font-bold tracking-wider uppercase">TikTok</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==========================================
+      FOOTER PANEL
+      ========================================== -->
+  <footer class="relative z-10 border-t border-borderGray bg-[#070707] py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Left Copyright -->
+      <div class="text-center md:text-left space-y-2">
+        <p class="text-xs font-semibold text-slate-500" data-i18n="footer.rights">
+          © 2026 Joaquín Cordero. Todos los derechos reservados.
+        </p>
+        <p class="text-[10px] text-slate-600 font-medium tracking-wide" data-i18n="footer.legal">
+          Términos de Servicio · Política de Privacidad · SLA de Soporte
+        </p>
+      </div>
+      <!-- Middle - Selector de idioma alternativo secundario -->
+      <div class="flex items-center gap-1 bg-cardGray border border-borderGray p-0.5 rounded-lg">
+        <button onclick="changeLanguage('ES')" class="footer-lang-btn px-2 py-1 rounded text-[10px] font-bold bg-[#262626] text-white border border-slate-700">ES</button>
+        <button onclick="changeLanguage('EN')" class="footer-lang-btn px-2 py-1 rounded text-[10px] font-bold text-slate-500 hover:text-slate-300">EN</button>
+        <button onclick="changeLanguage('PT')" class="footer-lang-btn px-2 py-1 rounded text-[10px] font-bold text-slate-500 hover:text-slate-300">PT</button>
+        <button onclick="changeLanguage('FR')" class="footer-lang-btn px-2 py-1 rounded text-[10px] font-bold text-slate-500 hover:text-slate-300">FR</button>
+      </div>
+      <!-- Right status badge -->
+      <div class="flex items-center gap-2 bg-[#0e2a1b] border border-emerald-500/30 px-3.5 py-1.5 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-[10px] font-bold tracking-widest text-emerald-400 uppercase" data-i18n="footer.status">
+          Todos los sistemas operativos
+        </span>
+      </div>
+    </div>
+  </footer>
+  <!-- ==========================================
+      vanilla JAVASCRIPT STATE ENGINE
+      ========================================== -->
+  <script>
+    // ------------------------------------------
+    // TRANSLATIONS DATA DICTIONARY
+    // ------------------------------------------
+    const TRANSLATIONS = {
+      ES: {
+        nav: {
+          about: "Sobre Mí",
+          services: "Soluciones",
+          portfolio: "Casos de Éxito",
+          contact: "Contacto",
+          cta: "Agendar Consultoría"
+        },
+        hero: {
+          tagline: "DESARROLLO WEB · FRONTEND ENGINEER · CRO",
+          title1: "Soluciones digitales de",
+          title2: "alto rendimiento",
+          ctaPrimary: "Agendar Consultoría",
+          ctaSecondary: "Ver Casos de Éxito",
+          subtitle: "Construyo plataformas web de alto rendimiento optimizadas para conversión (CRO), arquitectura SEO sólida y tiempos de carga inferiores a 1 segundo para startups y empresas que exigen resultados."
+        },
+        about: {
+          label: "FILOSOFÍA DE OPERACIONES",
+          title: "Impacto global con ejecución local",
+          bio1: "Soy Joaquín Cordero Freitez. He gestionado proyectos de desarrollo web de manera remota a nivel internacional, operando desde Venezuela, Colombia y Brasil. Esta perspectiva global me permite entender diferentes mercados y entregar soluciones adaptables y altamente resolutivas.",
+          bio2: "Me especializo en arquitectura frontend moderna: React, Next.js y Vercel. Cada línea de código está orientada a maximizar la velocidad, la conversión y la experiencia del usuario, alineadas con los objetivos comerciales de tu empresa.",
+          badgeTitle: "Operación Remota 100% Garantizada",
+          badgeSync: "Disponibilidad horaria síncrona en tu zona horaria.",
+          badgeSlack: "Canales de comunicación en Slack, Teams o Discord.",
+          badgeCicd: "Entregas iterativas constantes mediante CI/CD visual."
+        },
+        services: {
+          label: "SOLUCIONES CORPORATIVAS",
+          title: "Ingeniería web para empresas exigentes",
+          webTitle: "Desarrollo Web a Medida",
+          webDesc: "Frontend de alto rendimiento con optimización Core Web Vitals, SEO arquitectónico, diseño centrado en conversión (CRO) y tiempos de carga inferiores a 1 segundo para maximizar tus ventas.",
+          uiTitle: "UI/UX & Design Systems",
+          uiDesc: "Interfaces premium centradas en el usuario, con sistemas de diseño escalables, componentes reutilizables y flujos de navegación optimizados para la retención y la conversión.",
+          seoTitle: "SEO & Performance",
+          seoDesc: "Auditorías técnicas profundas, optimización de Core Web Vitals, arquitectura SEO avanzada y estrategias de posicionamiento orgánico para impulsar el tráfico cualificado y las conversiones.",
+          processTitle: "Pipeline de Trabajo Optimizado",
+          step1Title: "Discovery Call",
+          step1Desc: "Auditoría completa de tu infraestructura digital actual y definición de metas comerciales claras.",
+          step2Title: "Sprint & Execution",
+          step2Desc: "Desarrollo ágil en componentes modulares con sprints semanales y reportes de avance continuos.",
+          step3Title: "Deployment & ROI",
+          step3Desc: "Lanzamiento en entornos de producción ultrarrápidos y analítica orientada a optimizar la conversión."
+        },
+        portfolio: {
+          label: "CASOS DE ESTUDIO",
+          title: "Proyectos web que impulsan métricas de negocio",
+          filterAll: "Todos",
+          filterWeb: "Desarrollo Web",
+          challenge: "Reto",
+          solution: "Solución",
+          metric: "Métrica Clave",
+          visit: "Visitar Sitio"
+        },
+        contact: {
+          label: "EMBUDO DE ADQUISICIÓN",
+          title: "Inicia tu transformación digital hoy",
+          subtitle: "Completa el formulario corporativo para evaluar la viabilidad de tu proyecto y agendar una llamada de estrategia.",
+          name: "Nombre Completo",
+          company: "Organización / Empresa",
+          email: "Correo Corporativo",
+          budget: "Presupuesto Estimado",
+          requirements: "Requerimientos del Proyecto",
+          requirementsPlaceholder: "Describe brevemente las necesidades de desarrollo web de tu negocio...",
+          submit: "Enviar Formulario de Consulta",
+          submitting: "Procesando Consulta...",
+          successTitle: "¡Consulta Recibida con Éxito!",
+          successDesc: "Hemos registrado tus datos. Joaquín revisará tu solicitud y se pondrá en contacto en menos de 24 horas hábiles.",
+          directContact: "Contacto Directo",
+          social: "Canales Profesionales"
+        },
+        footer: {
+          rights: "© 2026 Joaquín Cordero. Todos los derechos reservados.",
+          legal: "Términos de Servicio · Política de Privacidad · SLA de Soporte",
+          status: "Todos los sistemas operativos"
+        }
+      },
+      EN: {
+        nav: {
+          about: "About Me",
+          services: "Solutions",
+          portfolio: "Case Studies",
+          contact: "Contact",
+          cta: "Book Consultation"
+        },
+        hero: {
+          tagline: "WEB DEVELOPMENT · FRONTEND ENGINEER · CRO",
+          title1: "High-performance",
+          title2: "digital solutions",
+          ctaPrimary: "Book Consultation",
+          ctaSecondary: "View Case Studies",
+          subtitle: "I build high-performance web platforms optimized for conversion (CRO), solid SEO architecture, and sub-second load times for startups and enterprises that demand results."
+        },
+        about: {
+          label: "OPERATIONS PHILOSOPHY",
+          title: "Global impact with local execution",
+          bio1: "I am Joaquín Cordero Freitez. I have managed web development projects remotely at an international level, operating from Venezuela, Colombia, and Brazil. This global perspective allows me to understand different markets and deliver adaptable, highly resolute solutions.",
+          bio2: "I specialize in modern frontend architecture: React, Next.js, and Vercel. Every line of code is oriented toward maximizing speed, conversion, and user experience — aligned with your company's business objectives.",
+          badgeTitle: "100% Guaranteed Remote Operations",
+          badgeSync: "Synchronous availability in your timezone.",
+          badgeSlack: "Communication channels via Slack, Teams, or Discord.",
+          badgeCicd: "Continuous iterative deliveries using visual CI/CD."
+        },
+        services: {
+          label: "ENTERPRISE WEB SOLUTIONS",
+          title: "Web engineering for demanding businesses",
+          webTitle: "Custom Web Development",
+          webDesc: "High-performance frontend optimized for Core Web Vitals, architectural SEO, conversion-centered design (CRO), and sub-second loading times to maximize your sales pipeline.",
+          uiTitle: "UI/UX & Design Systems",
+          uiDesc: "Premium user-centered interfaces with scalable design systems, reusable components, and optimized navigation flows for retention and conversion.",
+          seoTitle: "SEO & Performance",
+          seoDesc: "In-depth technical audits, Core Web Vitals optimization, advanced SEO architecture, and organic positioning strategies to drive qualified traffic and conversions.",
+          processTitle: "Optimized Workflow Pipeline",
+          step1Title: "Discovery Call",
+          step1Desc: "Full audit of your current digital infrastructure and alignment on clear business objectives.",
+          step2Title: "Sprint & Execution",
+          step2Desc: "Agile development using modular components with weekly sprints and continuous progress reports.",
+          step3Title: "Deployment & ROI",
+          step3Desc: "Deployment to ultra-fast production environments and web analytics oriented toward conversion optimization."
+        },
+        portfolio: {
+          label: "CASE STUDIES",
+          title: "Web projects driving real business metrics",
+          filterAll: "All",
+          filterWeb: "Web Dev",
+          challenge: "Challenge",
+          solution: "Solution",
+          metric: "Key Metric",
+          visit: "Visit Website"
+        },
+        contact: {
+          label: "ACQUISITION FUNNEL",
+          title: "Start your digital transformation today",
+          subtitle: "Complete the corporate inquiry form to assess project viability and schedule a strategy session.",
+          name: "Full Name",
+          company: "Organization / Company",
+          email: "Corporate Email",
+          budget: "Estimated Budget",
+          requirements: "Project Requirements",
+          requirementsPlaceholder: "Briefly describe your web development needs...",
+          submit: "Submit Consultation Request",
+          submitting: "Processing Inquiry...",
+          successTitle: "Inquiry Successfully Received!",
+          successDesc: "Your details have been logged. Joaquín will review your application and respond within 24 business hours.",
+          directContact: "Direct Contact",
+          social: "Professional Channels"
+        },
+        footer: {
+          rights: "© 2026 Joaquín Cordero. All rights reserved.",
+          legal: "Terms of Service · Privacy Policy · Support SLA",
+          status: "All systems operational"
+        }
+      },
+      PT: {
+        nav: {
+          about: "Sobre Mim",
+          services: "Soluções",
+          portfolio: "Casos de Sucesso",
+          contact: "Contato",
+          cta: "Agendar Consultoria"
+        },
+        hero: {
+          tagline: "DESENVOLVIMENTO WEB · FRONTEND ENGINEER · CRO",
+          title1: "Soluções digitais de",
+          title2: "alto desempenho",
+          ctaPrimary: "Agendar Consultoria",
+          ctaSecondary: "Ver Casos de Sucesso",
+          subtitle: "Construo plataformas web de alto desempenho otimizadas para conversão (CRO), arquitetura SEO sólida e tempos de carregamento inferiores a 1 segundo para startups e empresas que exigem resultados."
+        },
+        about: {
+          label: "FILOSOFIA DE OPERAÇÕES",
+          title: "Impacto global com execução local",
+          bio1: "Sou Joaquín Cordero Freitez. Gerenciei projetos de desenvolvimento web remotamente em nível internacional, operando a partir da Venezuela, Colômbia e Brasil. Essa perspectiva global me permite compreender diferentes mercados e entregar soluções adaptáveis e altamente resolutivas.",
+          bio2: "Especializo-me em arquitetura frontend moderna: React, Next.js e Vercel. Cada linha de código é orientada a maximizar velocidade, conversão e experiência do usuário, alinhadas aos objetivos comerciais da sua empresa.",
+          badgeTitle: "Operação Remota 100% Garantida",
+          badgeSync: "Disponibilidade síncrona no seu fuso horário.",
+          badgeSlack: "Canais de comunicação via Slack, Teams ou Discord.",
+          badgeCicd: "Entregas iterativas constantes por meio de CI/CD visual."
+        },
+        services: {
+          label: "SOLUÇÕES WEB CORPORATIVAS",
+          title: "Engenharia web para empresas exigentes",
+          webTitle: "Desenvolvimento Web Personalizado",
+          webDesc: "Frontend de alto desempenho com otimização de Core Web Vitals, SEO arquitetônico, design focado em conversão (CRO) e carregamento em menos de 1 segundo para maximizar suas vendas.",
+          uiTitle: "UI/UX & Design Systems",
+          uiDesc: "Interfaces premium centradas no usuário, com sistemas de design escaláveis, componentes reutilizáveis e fluxos de navegação otimizados para retenção e conversão.",
+          seoTitle: "SEO & Performance",
+          seoDesc: "Auditorias técnicas profundas, otimização de Core Web Vitals, arquitetura SEO avançada e estratégias de posicionamento orgânico para impulsionar o tráfego qualificado e as conversões.",
+          processTitle: "Fluxo de Trabalho Otimizado",
+          step1Title: "Discovery Call",
+          step1Desc: "Auditoria completa da sua infraestrutura digital atual e definição de metas comerciais claras.",
+          step2Title: "Sprint & Execução",
+          step2Desc: "Desenvolvimento ágil em componentes modulares com sprints semanais e relatórios de progresso contínuos.",
+          step3Title: "Deploy & ROI",
+          step3Desc: "Lançamento em ambientes de produção ultrarrápidos e análise web orientada a otimizar a conversão."
+        },
+        portfolio: {
+          label: "ESTUDOS DE CASO",
+          title: "Projetos web que impulsionam métricas de negócios",
+          filterAll: "Todos",
+          filterWeb: "Dev Web",
+          challenge: "Desafio",
+          solution: "Solução",
+          metric: "Métrica-Chave",
+          visit: "Visitar Site"
+        },
+        contact: {
+          label: "FUNIL DE AQUISIÇÃO",
+          title: "Inicie sua transformação digital hoje",
+          subtitle: "Preencha o formulário corporativo para avaliar a viabilidade do projeto e agendar uma chamada de estratégia.",
+          name: "Nome Completo",
+          company: "Organización / Empresa",
+          email: "E-mail Corporativo",
+          budget: "Orçamento Estimado",
+          requirements: "Requisitos do Projeto",
+          requirementsPlaceholder: "Descreva brevemente as necessidades de desenvolvimento web do seu negócio...",
+          submit: "Enviar Formulário de Consulta",
+          submitting: "Processando Consulta...",
+          successTitle: "Consulta Recebida com Sucesso!",
+          successDesc: "Registramos seus dados. Joaquín analisará sua solicitação e entrará em contato em menos de 24 horas úteis.",
+          directContact: "Contato Direto",
+          social: "Canais Profissionais"
+        },
+        footer: {
+          rights: "© 2026 Joaquín Cordero. Todos os direitos reservados.",
+          legal: "Termos de Serviço · Política de Privacidade · SLA de Suporte",
+          status: "Todos os sistemas operacionais"
+        }
+      },
+      FR: {
+        nav: {
+          about: "À Propos",
+          services: "Solutions",
+          portfolio: "Études de Cas",
+          contact: "Contact",
+          cta: "Réserver un Audit"
+        },
+        hero: {
+          tagline: "DÉVELOPPEMENT WEB · FRONTEND ENGINEER · CRO",
+          title1: "Solutions digitales à",
+          title2: "haute performance",
+          ctaPrimary: "Réserver un Audit",
+          ctaSecondary: "Voir les Études de Cas",
+          subtitle: "Je construis des plateformes web haute performance optimisées pour la conversion (CRO), une architecture SEO solide et des temps de chargement inférieurs à 1 seconde pour les startups et entreprises qui exigent des résultats."
+        },
+        about: {
+          label: "PHILOSOPHIE DES OPÉRATIONS",
+          title: "Impact mondial avec exécution locale",
+          bio1: "Je suis Joaquín Cordero Freitez. J'ai géré des projets de développement web à distance au niveau international, opérant depuis le Venezuela, la Colombie et le Brésil. Cette perspective globale me permet de comprendre différents marchés et de livrer des solutions adaptables et hautement résolutives.",
+          bio2: "Je me spécialise dans l'architecture frontend moderne : React, Next.js et Vercel. Chaque ligne de code est orientée vers la maximisation de la vitesse, de la conversion et de l'expérience utilisateur, alignée sur les objectifs commerciaux de votre entreprise.",
+          badgeTitle: "Opération à Distance 100% Garantie",
+          badgeSync: "Disponibilité synchrone selon votre fuseau horaire.",
+          badgeSlack: "Canaux de communication dédiés sur Slack, Teams ou Discord.",
+          badgeCicd: "Livrables itératifs constants via une intégration continue (CI/CD) visuelle."
+        },
+        services: {
+          label: "SOLUTIONS WEB ENTREPRISE",
+          title: "Ingénierie web pour entreprises exigeantes",
+          webTitle: "Développement Web Sur Mesure",
+          webDesc: "Frontend haute performance optimisé Core Web Vitals, SEO architectural, conception centrée conversion (CRO) et temps de chargement inférieurs à 1 seconde pour maximiser vos ventes.",
+          uiTitle: "UI/UX & Systèmes de Design",
+          uiDesc: "Interfaces premium centrées sur l'utilisateur, avec des systèmes de design évolutifs, des composants réutilisables et des parcours de navigation optimisés pour la rétention et la conversion.",
+          seoTitle: "SEO & Performance",
+          seoDesc: "Audits techniques approfondis, optimisation Core Web Vitals, architecture SEO avancée et stratégies de positionnement organique pour générer du trafic qualifié et des conversions.",
+          processTitle: "Pipeline de Travail Optimisé",
+          step1Title: "Discovery Call",
+          step1Desc: "Audit complet de votre infrastructure digitale actuelle et définition d'objectifs commerciaux clairs.",
+          step2Title: "Sprint & Exécution",
+          step2Desc: "Développement agile en composants modulaires avec des sprints hebdomadaires et des rapports de progression continus.",
+          step3Title: "Déploiement & ROI",
+          step3Desc: "Lancement sur des serveurs de production ultra-rapides et analyses orientées vers l'optimisation des conversions."
+        },
+        portfolio: {
+          label: "ÉTUDES DE CAS",
+          title: "Des projets web qui stimulent les indicateurs d'affaires",
+          filterAll: "Tous",
+          filterWeb: "Dév Web",
+          challenge: "Défi",
+          solution: "Solution",
+          metric: "Indicateur Clé",
+          visit: "Visiter le Site"
+        },
+        contact: {
+          label: "TUNNEL D'ACQUISITION",
+          title: "Démarrez votre transformation digitale aujourd'hui",
+          subtitle: "Remplissez le formulaire de consultation pour évaluer la faisabilité de votre projet et planifier un entretien stratégique.",
+          name: "Nom Complet",
+          company: "Organisation / Entreprise",
+          email: "Adresse Email Professionnelle",
+          budget: "Budget Estimé",
+          requirements: "Besoins du Projet",
+          requirementsPlaceholder: "Décrivez brièvement vos besoins en développement web...",
+          submit: "Envoyer la Demande de Consultation",
+          submitting: "Traitement en cours...",
+          successTitle: "Demande reçue avec succès !",
+          successDesc: "Nous avons enregistré vos informations. Joaquín examinera votre demande et vous contactera sous 24 heures ouvrées.",
+          directContact: "Contact Direct",
+          social: "Réseaux Professionnels"
+        },
+        footer: {
+          rights: "© 2026 Joaquín Cordero. Tous droits réservés.",
+          legal: "Conditions d'Utilisation · Politique de Confidentialité · SLA de Support",
+          status: "Tous les systèmes sont opérationnels"
+        }
+      }
+    };
+    // ------------------------------------------
+    // PROJECTS METADATA
+    // ------------------------------------------
+    const PROJECTS_DATA = [
+      {
+        id: "proxym",
+        url: "https://proxym.io/es",
+        category: "WEB",
+        image: "assets/case-proxym.png",
+        langData: {
+          ES: {
+            title: "Proxym",
+            challenge: "Arquitectura de plataforma tecnológica multilingüe para adquisición de clientes corporativos.",
+            solution: "Frontend optimizado de alto rendimiento para robustecer la confianza del sector B2B.",
+            metric: "Velocidad de carga <0.8s"
+          },
+          EN: {
+            title: "Proxym",
+            challenge: "Multilingual technology platform architecture for enterprise customer acquisition.",
+            solution: "High-performance optimized frontend designed to build trust in the B2B sector.",
+            metric: "Loading speed <0.8s"
+          },
+          PT: {
+            title: "Proxym",
+            challenge: "Arquitetura de plataforma tecnológica multilíngue para aquisição de clientes corporativos.",
+            solution: "Frontend otimizado de alto desempenho para robustecer a confiança do setor B2B.",
+            metric: "Carregamento <0.8s"
+          },
+          FR: {
+            title: "Proxym",
+            challenge: "Architecture de plateforme technologique multilingue pour l'acquisition de clients grands comptes.",
+            solution: "Développement d'un frontend optimisé haute performance pour renforcer la confiance du B2B.",
+            metric: "Temps de chargement <0.8s"
+          }
+        }
+      },
+      {
+        id: "median",
+        url: "https://www.medianwifi.com/es/",
+        category: "WEB",
+        image: "assets/case-median.png",
+        langData: {
+          ES: {
+            title: "Median Wifi",
+            challenge: "Fricción en el embudo de ventas digital y UX confuso de planes de conectividad.",
+            solution: "Reestructuración de la interfaz e interfaces de usuario para agilizar el flujo de conversión.",
+            metric: "Conversión +45%"
+          },
+          EN: {
+            title: "Median Wifi",
+            challenge: "High friction in the digital sales funnel and confusing UX of connectivity plans.",
+            solution: "Interface and user experience overhaul to streamline the conversion flow.",
+            metric: "Conversion +45%"
+          },
+          PT: {
+            title: "Median Wifi",
+            challenge: "Fricção no funil de vendas digital e UX confuso de planos de conectividade.",
+            solution: "Reestruturação da interface e fluxos de usuário para agilizar o fluxo de conversão.",
+            metric: "Conversão +45%"
+          },
+          FR: {
+            title: "Median Wifi",
+            challenge: "Frictions dans le tunnel de vente digital et UX confuse des offres de connectivité.",
+            solution: "Refonte de l'interface et du parcours utilisateur pour fluidifier le flux de conversion.",
+            metric: "Conversion +45%"
+          }
+        }
+      },
+      {
+        id: "voyage",
+        url: "https://www.voyageescape.com/es",
+        category: "WEB",
+        image: "assets/case-voyage.png",
+        langData: {
+          ES: {
+            title: "Voyage Escape",
+            challenge: "Deficiencia en la retención visual de usuarios calificados en su plataforma de reservas de viajes.",
+            solution: "UI inmersiva optimizada, arquitectura de componentes en React, aceleración de tiempos de respuesta y flujos interactivos de reserva.",
+            metric: "Retención +120%"
+          },
+          EN: {
+            title: "Voyage Escape",
+            challenge: "Low visual retention of qualified users on their travel booking platform.",
+            solution: "Immersive React UI design, component architecture, website speed acceleration, and interactive booking flows.",
+            metric: "Retention +120%"
+          },
+          PT: {
+            title: "Voyage Escape",
+            challenge: "Deficiência na retenção visual de usuários qualificados na plataforma de reservas de viagens.",
+            solution: "UI imersiva em React otimizada, arquitetura de componentes, aceleração do tempo de resposta e fluxos interativos de reserva.",
+            metric: "Retenção +120%"
+          },
+          FR: {
+            title: "Voyage Escape",
+            challenge: "Faible rétention visuelle des utilisateurs qualifiés sur la plateforme de réservation de voyages.",
+            solution: "UI immersive React optimisée, architecture en composants, accélération des temps de réponse et tunnels de réservation interactifs.",
+            metric: "Rétention +120%"
+          }
+        }
+      },
+      {
+        id: "dingdong",
+        url: "https://dingdonghostel.com/",
+        category: "WEB",
+        image: "assets/case-hostel.png",
+        langData: {
+          ES: {
+            title: "Ding Dong Hostel",
+            challenge: "Inexistencia de un canal directo y automatizado para reservas hoteleras.",
+            solution: "Landing Page hiper-enfocada en conversión que incrementó las reservas directas un 40% durante el primer mes de despliegue.",
+            metric: "Reservas directas +40%"
+          },
+          EN: {
+            title: "Ding Dong Hostel",
+            challenge: "Absence of a direct, automated channel for hotel bookings.",
+            solution: "Landing page hyper-focused on conversion that grew direct bookings by 40% during the first month of deployment.",
+            metric: "Direct Bookings +40%"
+          },
+          PT: {
+            title: "Ding Dong Hostel",
+            challenge: "Inexistência de um canal direto e automatizado para reservas de hospedagem.",
+            solution: "Landing page focada em conversão que aumentou as reservas diretas em 40% no primeiro mês de implantação.",
+            metric: "Reservas Diretas +40%"
+          },
+          FR: {
+            title: "Ding Dong Hostel",
+            challenge: "Absence de canal de réservation direct et automatisé pour l'auberge.",
+            solution: "Landing page ultra-ciblée sur la conversion qui a augmenté les réservations directes de 40% au cours du premier mois.",
+            metric: "Réservations Directes +40%"
+          }
+        }
+      }
+    ];
+    const LANGS = [
+      { code: "ES", name: "Español", flag: "🇪🇸" },
+      { code: "EN", name: "English", flag: "🇺🇸" },
+      { code: "PT", name: "Português", flag: "🇧🇷" },
+      { code: "FR", name: "Français", flag: "🇫🇷" }
+    ];
+    // Global active states
+    let currentLang = 'ES';
+    let activeFilter = 'ALL';
+    // Helper translation retriever
+    function getTranslation(path, lang) {
+      const keys = path.split('.');
+      let result = TRANSLATIONS[lang];
+      for (const key of keys) {
+        if (result && result[key] !== undefined) {
+          result = result[key];
+        } else {
+          return null;
+        }
+      }
+      return result;
+    }
+    // Toggle Language Dropdown
+    const langBtn = document.getElementById('lang-dropdown-btn');
+    const langMenu = document.getElementById('lang-dropdown-menu');
+    const langArrow = document.getElementById('lang-arrow');
+    
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !langMenu.classList.contains('hidden');
+      if (isOpen) {
+        langMenu.classList.add('hidden');
+        langArrow.classList.remove('rotate-180');
+      } else {
+        langMenu.classList.remove('hidden');
+        langArrow.classList.add('rotate-180');
+      }
+    });
+    document.addEventListener('click', () => {
+      langMenu.classList.add('hidden');
+      langArrow.classList.remove('rotate-180');
+    });
+    // Mobile Language Tray toggle
+    const mobileLangBtn = document.getElementById('mobile-lang-btn');
+    const mobileLangTray = document.getElementById('mobile-lang-tray');
+    
+    mobileLangBtn.addEventListener('click', () => {
+      mobileLangTray.classList.toggle('hidden');
+    });
+    // Mobile Navigation Drawer toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navDrawer = document.getElementById('mobile-nav-drawer');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !navDrawer.classList.contains('hidden');
+      if (isOpen) {
+        navDrawer.classList.add('hidden');
+        menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+      } else {
+        navDrawer.classList.remove('hidden');
+        menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`;
+      }
+    });
+    function toggleMobileMenu() {
+      navDrawer.classList.add('hidden');
+      menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+    }
+    // Change Language
+    function changeLanguage(langCode) {
+      currentLang = langCode;
+      
+      // Update primary trigger buttons text
+      const langData = LANGS.find(l => l.code === langCode);
+      document.getElementById('lang-btn-text').innerText = `${langData.flag} ${langData.code}`;
+      document.getElementById('mobile-lang-text').innerText = `${langData.flag} ${langData.code}`;
+      
+      // Update DOM translation nodes
+      document.querySelectorAll('[data-i18n]').forEach(node => {
+        const key = node.getAttribute('data-i18n');
+        const text = getTranslation(key, langCode);
+        if (text) {
+          node.innerHTML = text;
+        }
+      });
+      // Update placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(node => {
+        const key = node.getAttribute('data-i18n-placeholder');
+        const text = getTranslation(key, langCode);
+        if (text) {
+          node.setAttribute('placeholder', text);
+        }
+      });
+      // Update dropdown option styles
+      const dropdownButtons = langMenu.querySelectorAll('button');
+      dropdownButtons.forEach(btn => {
+        const onclickText = btn.getAttribute('onclick');
+        if (onclickText.includes(langCode)) {
+          btn.className = "w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-medium text-white bg-accentBlue";
+          if (!btn.querySelector('svg')) {
+            btn.insertAdjacentHTML('beforeend', `<svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>`);
+          }
+        } else {
+          btn.className = "w-full flex items-center justify-between px-3 py-2 rounded-lg text-left text-xs font-medium text-slate-300 hover:bg-[#222222] hover:text-white";
+          const checkIcon = btn.querySelector('svg');
+          if (checkIcon) checkIcon.remove();
+        }
+      });
+      // Update mobile tray highlights
+      const trayButtons = mobileLangTray.querySelectorAll('button');
+      trayButtons.forEach(btn => {
+        const onclickText = btn.getAttribute('onclick');
+        if (onclickText.includes(langCode)) {
+          btn.className = "mobile-lang-opt flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-accentBlue text-white";
+        } else {
+          btn.className = "mobile-lang-opt flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#222222] text-slate-300";
+        }
+      });
+      // Update footer buttons highlights
+      const footerButtons = document.querySelectorAll('.footer-lang-btn');
+      footerButtons.forEach(btn => {
+        const onclickText = btn.getAttribute('onclick');
+        if (onclickText.includes(langCode)) {
+          btn.className = "footer-lang-btn px-2 py-1 rounded text-[10px] font-bold bg-[#262626] text-white border border-slate-700";
+        } else {
+          btn.className = "footer-lang-btn px-2 py-1 rounded text-[10px] font-bold text-slate-500 hover:text-slate-300";
+        }
+      });
+      // Re-render project cards in the selected language
+      renderProjects();
+      
+      // Close open selectors
+      mobileLangTray.classList.add('hidden');
+    }
+    // Set budget custom radio selector
+    function setBudget(val, index) {
+      document.getElementById('form-budget').value = val;
+      for (let i = 1; i <= 3; i++) {
+        const btn = document.getElementById(`budget-btn-${i}`);
+        if (i === index) {
+          btn.className = "py-3 rounded-lg border text-center text-xs font-semibold tracking-wider transition-all duration-200 border-accentBlue bg-accentBlue/10 text-white shadow shadow-accentBlue/20";
+        } else {
+          btn.className = "py-3 rounded-lg border text-center text-xs font-semibold tracking-wider transition-all duration-200 border-borderGray bg-[#0d0d0d] text-slate-400 hover:text-white hover:border-slate-700";
+        }
+      }
+    }
+    // Set Portfolio filter
+    function setPortfolioFilter(category) {
+      activeFilter = category;
+      
+      const filters = ['ALL', 'WEB'];
+      const elementIds = {
+        'ALL': 'filter-btn-all',
+        'WEB': 'filter-btn-web'
+      };
+      filters.forEach(f => {
+        const btn = document.getElementById(elementIds[f]);
+        if (f === category) {
+          btn.className = "px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all bg-[#262626] text-white border border-slate-700 shadow-sm";
+        } else {
+          btn.className = "px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all text-slate-400 hover:text-white";
+        }
+      });
+      renderProjects();
+    }
+    // Dynamic Projects Grid Rendering
+    function renderProjects() {
+      const container = document.getElementById('projects-grid');
+      container.innerHTML = '';
+      
+      const filtered = activeFilter === 'ALL' 
+        ? PROJECTS_DATA 
+        : PROJECTS_DATA.filter(p => p.category === activeFilter);
+        
+      filtered.forEach(project => {
+        const data = project.langData[currentLang];
+        const categoryName = getTranslation('portfolio.filterWeb', currentLang);
+        
+        const cardHtml = `
+          <div class="bg-cardGray border border-borderGray rounded-xl overflow-hidden hover:scale-[1.01] hover:-translate-y-0.5 transition-all duration-300 shadow-xl shadow-black/30 group">
+            
+            <!-- Image Container -->
+            <div class="aspect-video w-full overflow-hidden relative border-b border-borderGray">
+              <img 
+                src="${project.image}" 
+                alt="${data.title}" 
+                class="object-cover w-full h-full object-center group-hover:scale-[1.02] transition-transform duration-700" 
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+              <div class="absolute top-4 left-4">
+                <span class="text-[9px] font-bold uppercase tracking-widest text-accentBlue bg-accentBlue/10 border border-accentBlue/30 px-2.5 py-1 rounded-full backdrop-blur-md">
+                  ${categoryName}
+                </span>
+              </div>
+            </div>
+            <!-- Info Panel -->
+            <div class="p-6 md:p-8 space-y-6">
+              
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl md:text-2xl font-heading font-extrabold text-white tracking-tight">
+                  ${data.title}
+                </h3>
+                <a 
+                  href="${project.url}" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-1.5 text-xs text-accentBlue hover:text-white transition-colors duration-200"
+                >
+                  <span>${getTranslation('portfolio.visit', currentLang)}</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+              <!-- Challenge & Solution block -->
+              <div class="space-y-4">
+                <div class="p-4 rounded-xl bg-black/40 border border-borderGray/60 space-y-3">
+                  <div class="text-xs">
+                    <span class="font-bold text-slate-300 uppercase tracking-wider text-[10px]">${getTranslation('portfolio.challenge', currentLang)}:</span>
+                    <span class="text-slate-400 font-normal leading-normal block mt-1">${data.challenge}</span>
+                  </div>
+                  <div class="text-xs border-t border-borderGray/40 pt-2.5">
+                    <span class="font-bold text-slate-300 uppercase tracking-wider text-[10px]">${getTranslation('portfolio.solution', currentLang)}:</span>
+                    <span class="text-slate-400 font-normal leading-normal block mt-1">${data.solution}</span>
+                  </div>
+                </div>
+                <!-- Key metric badge -->
+                <div class="flex items-center justify-between p-3.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
+                  <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">
+                    ${getTranslation('portfolio.metric', currentLang)}
+                  </span>
+                  <span class="text-xs font-bold text-white bg-[#0e2a1b] px-3 py-1 rounded-lg border border-emerald-500/30">
+                    ${data.metric}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        container.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+    // Form submission
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('form-submit-btn');
+      const form = document.getElementById('corporate-contact-form');
+      const successCard = document.getElementById('form-success-card');
+      
+      const name = document.getElementById('form-name').value;
+      const email = document.getElementById('form-email').value;
+      const message = document.getElementById('form-message').value;
+      if (!name || !email || !message) {
+        alert('Por favor, completa los campos requeridos.');
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.innerText = getTranslation('contact.submitting', currentLang);
+      // Simulate API pipeline integration
+      setTimeout(() => {
+        form.classList.add('hidden');
+        successCard.classList.remove('hidden');
+        
+        // Reset inputs
+        form.reset();
+        setBudget('<$2k', 1);
+        submitBtn.disabled = false;
+        submitBtn.innerText = getTranslation('contact.submit', currentLang);
+      }, 1500);
+    }
+    function resetContactForm() {
+      const form = document.getElementById('corporate-contact-form');
+      const successCard = document.getElementById('form-success-card');
+      
+      successCard.classList.add('hidden');
+      form.classList.remove('hidden');
+    }
+    // Initialize Projects on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProjects();
+    });
+  </script>
+</body>
+</html>
